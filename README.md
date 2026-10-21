@@ -2,7 +2,7 @@
 
 RPG 3D que roda direto no navegador (PC e celular), feito com [Three.js](https://threejs.org/). Não precisa instalar nada.
 
-🎮 **Jogar:** https://brenod.github.io/game-3d/
+🎮 **Jogar:** https://brenod.github.io/Game-3D/
 
 ## Recursos
 
