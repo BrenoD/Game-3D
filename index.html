@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#0b0f1a">
+  <title>Reinos de Aether — RPG 3D</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">{ "imports": { "three": "./vendor/three.module.min.js" } }</script>
+</head>
+<body>
+  <div id="game"></div>
+
+  <div id="hud" class="hidden">
+    <div id="crosshair"></div>
+    <div id="vignette"></div>
+
+    <div id="player-frame">
+      <div id="pf-name"><span id="pf-class"></span><span id="pf-level">Nível 1</span></div>
+      <div class="bar hp"><div class="fill" id="hp-fill"></div><span id="hp-text"></span></div>
+      <div class="bar mp"><div class="fill" id="mp-fill"></div><span id="mp-text"></span></div>
+      <div class="bar st"><div class="fill" id="st-fill"></div></div>
+      <div id="buff" class="hidden">📯 Fúria: +50% de dano</div>
+    </div>
+
+    <div id="boss-bar" class="hidden"><div class="boss-name">💀 Golem Ancião</div><div class="bar"><div class="fill" id="boss-fill"></div></div></div>
+
+    <div id="abilities"></div>
+    <div id="xp-bar"><div class="fill" id="xp-fill"></div><span id="xp-text"></span></div>
+    <div id="sp-badge" class="hidden"></div>
+
+    <div id="map-wrap">
+      <canvas id="minimap" width="180" height="180"></canvas>
+      <div id="clock"></div>
+    </div>
+    <div id="quest"><h3>Missão</h3><div id="quest-text"></div></div>
+    <div id="log"></div>
+
+    <div id="interact-hint" class="hidden"></div>
+    <div id="dialog" class="hidden"><div id="dialog-name"></div><div id="dialog-text"></div><div class="hint">Toque ou aperte <span class="key">E</span> para continuar</div></div>
+    <div id="floaters"></div>
+
+    <!-- controles de toque -->
+    <div id="touch-ui">
+      <div id="joy-base"><div id="joy-knob"></div></div>
+      <button id="t-jump" class="tbtn" aria-label="Pular">⤒</button>
+      <button id="t-interact" class="tbtn hidden" aria-label="Interagir">💬</button>
+      <button id="t-skills" class="tbtn small" aria-label="Habilidades">⭐</button>
+      <button id="t-zoom" class="tbtn small" aria-label="Zoom">🔍</button>
+    </div>
+
+    <div id="pause" class="hidden"><div>⏸ Pausado</div><small>Clique para continuar</small></div>
+
+    <div id="skills-panel" class="hidden">
+      <div class="panel">
+        <button id="skills-close" aria-label="Fechar">✕</button>
+        <h2>Árvore de Habilidades</h2>
+        <div class="points">Pontos disponíveis: <b id="skill-points">0</b></div>
+        <div class="cols">
+          <div>
+            <h3>Habilidades da classe</h3>
+            <div id="skill-list"></div>
+          </div>
+          <div>
+            <h3>Talentos</h3>
+            <div id="passive-list"></div>
+            <h3>Atributos</h3>
+            <div id="char-stats"></div>
+          </div>
+        </div>
+        <div class="tip">Você ganha 2 pontos por nível e pontos extras ao concluir missões. Aperte <span class="key">K</span> para abrir e fechar.</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="start-screen">
+    <div class="start-inner">
+      <h1>Reinos de Aether</h1>
+      <p class="sub">Um RPG de mundo aberto — escolha sua classe</p>
+      <div id="class-cards"></div>
+      <div id="controls">
+        <div class="desk"><b>PC:</b> WASD mover · Mouse mirar · Clique atacar · 1 2 3 habilidades · Shift correr · Espaço pular · E falar · K habilidades · Scroll zoom</div>
+        <div class="mob"><b>Celular:</b> Joystick à esquerda · Arraste à direita para girar a câmera · Botões para atacar e usar habilidades · Gire o celular na horizontal</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="death-screen" class="hidden">
+    <h2>Você caiu em combate</h2>
+    <p>Seus inimigos celebram... por enquanto.</p>
+    <button id="respawn-btn">Renascer na vila</button>
+  </div>
+
+  <div id="rotate-hint"><div>📱↻</div><p>Gire o celular para a horizontal para jogar</p></div>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
